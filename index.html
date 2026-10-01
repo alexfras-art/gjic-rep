@@ -10,7 +10,8 @@
     - response time "v enem delovnem dnevu", review turnaround "praviloma v 7 dneh", "30 minut" intro call
     - no price or "free" claim is made anywhere; the fee model is described only as agreed in writing in advance
     - the comparison sheet ("Pregled polic · družina N.") is an authored sample with invented figures;
-      it is labelled "Vzorčni prikaz" on the page and insurers are anonymised on purpose
+      it is labelled "Vzorčni podatki" on the page and insurers are anonymised on purpose; the same tag marks
+      the two year rows in the about facts list and the office address block
   The contact form is frontend-only: it validates and shows a success state ("povpraševanje je oddano") but sends nothing.
   No licence number or regulator claim is shown on purpose; add the real AZN registration once it exists.
 -->
@@ -70,7 +71,7 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:"Schibsted G
 html{scrollbar-color:var(--rule) var(--ground)}
 ::-webkit-scrollbar-track{background:var(--ground)}
 ::-webkit-scrollbar-thumb{background:var(--rule);border:2px solid var(--ground);border-radius:var(--radius)}
-:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:2px}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:var(--radius)}
 .on-navy :focus-visible{outline-color:var(--on-navy)}
 .on-navy .sheet :focus-visible,.on-navy .form :focus-visible{outline-color:var(--navy)}
 img{display:block;max-width:100%;height:auto}
@@ -109,7 +110,7 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 /* Masthead (scrolls away) */
 .masthead{padding:var(--s-5) 0 var(--s-4)}
 .masthead .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-3) var(--s-5)}
-.brand{display:flex;align-items:center;gap:var(--s-4);text-decoration:none;min-width:0;flex:1 1 auto}
+.brand{display:flex;align-items:center;gap:var(--s-4);text-decoration:none;min-width:0;flex:0 1 auto;margin-right:auto}
 .masthead-right{flex:none}
 .brand>span>.brand-short{display:none}
 .brand img{width:56px;height:56px}
@@ -121,7 +122,7 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 .masthead-right a:hover{text-decoration:underline}
 .brand>span>span{display:block}
 @media (max-width:640px){.masthead{padding:var(--s-4) 0 var(--s-3)}.masthead-right strong{display:none}.brand img{width:44px;height:44px}.brand-name{font-size:1.0625rem}.brand-sub{font-size:.9375rem}}
-@media (max-width:480px){.brand>span>.brand-sub{display:none}.brand>span>.brand-name{display:none}.brand>span>.brand-short{display:block;font-weight:700;font-size:1.125rem;letter-spacing:-.01em}.masthead-right{font-size:1rem}.masthead-right strong{display:block}.footer .brand>span>.brand-name{display:block}}
+@media (max-width:480px){.brand>span>.brand-sub{display:none}.brand>span>.brand-name{display:none}.brand>span>.brand-short{display:block;font-weight:700;font-size:1.125rem;letter-spacing:-.01em}.masthead-right{font-size:1rem}.masthead-right strong{display:block}.footer .brand>span>.brand-name,.footer .brand>span>.brand-sub{display:block}}
 
 /* Sticky nav */
 .nav{position:sticky;top:0;z-index:50;background:var(--ground);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule-soft);transition:box-shadow .3s var(--ease)}
@@ -131,7 +132,7 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 .nav-links a{text-decoration:none;font-weight:500;font-size:1rem;display:inline-flex;align-items:center;min-height:44px;border-bottom:2px solid transparent;transition:border-color .2s var(--ease)}
 .nav-links a:hover,.nav-links a[aria-current="true"]{border-color:var(--ink)}
 .nav-cta{min-height:44px;padding:var(--s-1) var(--s-4);font-size:.9375rem;text-align:center;flex:none;margin-left:auto}
-@media (max-width:480px){.nav .container{flex-wrap:nowrap;gap:var(--s-2)}.nav-toggle{min-width:0;flex:0 1 auto}.nav-cta{flex:0 1 auto;min-width:0;white-space:normal;line-height:1.1;padding-inline:var(--s-3)}}
+@media (max-width:480px){.nav .container{flex-wrap:nowrap;gap:var(--s-2)}.nav-toggle{flex:none}.nav-cta{flex:0 1 auto;min-width:0;white-space:normal;line-height:1.1;padding-inline:var(--s-3);overflow-wrap:anywhere}}
 .nav-toggle{display:none;align-items:center;gap:var(--s-2);background:none;border:0;min-height:44px;padding:0;font:inherit;font-weight:600;font-size:1rem;color:var(--ink);cursor:pointer}
 .nav-toggle svg{width:22px;height:22px;flex:none}
 .nav-toggle .ic-close{display:none}
@@ -197,11 +198,14 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 
 .sheet{background:var(--sheet);color:var(--ink);border-radius:var(--radius);box-shadow:var(--shadow-sheet);overflow:clip}
 .table-wrap{overflow-x:auto;overflow-y:clip}
+.table-wrap:focus-visible{outline-offset:-3px}
 .sheet-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--s-3) var(--s-5);padding:var(--s-5) var(--s-6);border-bottom:1px solid var(--rule)}
 .sheet-head strong{font-weight:700;font-size:1.125rem;letter-spacing:-.01em}
 .sheet-head .meta{color:var(--ink-2);font-size:1rem}
-.sheet-head .sample{display:inline-flex;align-items:center;gap:var(--s-2);border:1px solid var(--control);border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-size:.9375rem;font-weight:500;color:var(--ink-2)}
-.sheet table{width:100%;border-collapse:collapse;font-size:1.0625rem}
+.sheet-head .sample{display:inline-flex;align-items:center;gap:var(--s-2);background:var(--rule-soft);border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-size:.9375rem;font-weight:500;color:var(--ink-2)}
+.sheet table{width:100%;border-collapse:collapse;font-size:1.0625rem;table-layout:fixed}
+.sheet thead th:first-child{width:44%}
+.sheet thead th.c-diff{width:14%}
 .sheet th,.sheet td{padding:var(--s-4) var(--s-4);text-align:left;vertical-align:top;border-bottom:1px solid var(--rule-soft)}
 .sheet th:first-child,.sheet td:first-child{padding-left:var(--s-6)}
 .sheet th:last-child,.sheet td:last-child{padding-right:var(--s-6)}
@@ -228,7 +232,7 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 .sheet.is-armed tbody tr .c-rec,.sheet.is-armed tfoot .c-rec{background:transparent}
 .sheet.is-revealed tbody tr,.sheet.is-revealed tfoot tr{opacity:1;transform:none}
 .sheet tbody tr .c-rec,.sheet tfoot .c-rec{transition:background-color .5s var(--ease)}
-@media (prefers-reduced-motion:reduce){.sheet tbody tr,.sheet tfoot tr,.sheet .c-rec{transition:none!important}}
+@media (prefers-reduced-motion:reduce){.sheet tbody tr,.sheet tfoot tr,.sheet .c-rec{transition:none!important}.faq summary svg,.link-arrow svg{transition:none!important}.btn{transition-property:background-color,border-color,color}.btn:active{transform:none}.link-arrow:hover svg{transform:none}}
 .desk-after{margin-top:var(--s-7);display:grid;grid-template-columns:7fr 5fr;gap:var(--s-6) var(--s-8);align-items:center}
 .desk-after p{color:var(--navy-text);font-size:1.125rem;margin:0}
 .desk-after p+p{margin-top:var(--s-4)}
@@ -308,7 +312,7 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 .about-facts span:first-child{color:var(--ink-2)}
 .about-facts span:last-child{font-weight:600;text-align:right}
 .about-facts .facts-note span:last-child{font-weight:600}
-.about-facts .sample{display:inline-flex;align-items:center;border:1px solid var(--control);border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-size:.9375rem;font-weight:500;color:var(--ink-2)}
+.about-facts .sample{display:inline-flex;align-items:center;background:var(--rule-soft);border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-size:.9375rem;font-weight:500;color:var(--ink-2)}
 .about-text p{color:var(--ink-2)}
 .about-text p.lead{color:var(--ink);font-size:1.25rem;line-height:1.45}
 @media (max-width:860px){.about{grid-template-columns:1fr;gap:var(--s-7)}}
@@ -331,6 +335,8 @@ h3{font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.2;letter-spacing:-.015em}
 .contact h2{color:var(--on-navy)}
 .contact .section-head p{color:var(--navy-text)}
 .contact-grid{display:grid;grid-template-columns:7fr 5fr;gap:var(--s-8);align-items:start}
+.contact-grid>*{min-width:0}
+.btn{overflow-wrap:anywhere}
 @media (max-width:960px){.contact-grid{grid-template-columns:1fr;gap:var(--s-7)}.contact-side{order:-1}.contact-side .block:first-child{border-top:0;padding-top:0}}
 .form{background:var(--sheet);color:var(--ink);border-radius:var(--radius);box-shadow:var(--shadow-sheet);padding:var(--s-6)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-5)}
@@ -373,7 +379,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .form.is-sent .form-success{display:block}
 .contact-side{color:var(--navy-text);font-size:1.0625rem}
 .contact-side h3{color:var(--on-navy);margin-bottom:var(--s-4);display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap}
-.contact-side .sample{display:inline-flex;align-items:center;border:1px solid var(--navy-text);border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-size:.9375rem;font-weight:500;color:var(--navy-text);letter-spacing:0}
+.contact-side .sample{display:inline-flex;align-items:center;background:var(--navy-line);border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-size:.9375rem;font-weight:500;color:var(--navy-text);letter-spacing:0}
 .contact-side .block{padding:var(--s-5) 0;border-top:1px solid var(--navy-line)}
 .contact-side .block:last-child{border-bottom:1px solid var(--navy-line)}
 .contact-side a{color:var(--on-navy);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;min-height:44px}
@@ -538,7 +544,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </table>
       </div>
       <div class="sheet-foot">
-        <span>Boljše kritje za štiri družinske člane, nižja skupna premija. Odločitev ostane vaša. Zavarovalnice so v vzorcu zakrite.</span>
+        <span>Boljše kritje za vso družino, nižja skupna premija. Odločitev ostane vaša. Zavarovalnice so v vzorcu zakrite.</span>
         <span class="sig">Pripravil: Jaka Gerencer, GJIC</span>
       </div>
     </div>
@@ -740,7 +746,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     </div>
     <div class="contact-grid">
       <form class="form" id="form" action="#kontakt" method="get">
-        <p class="form-intro">Obvezna sta samo ime in e-poštni naslov. Vse drugo lahko pustite prazno.</p>
+        <p class="form-intro">Obvezna sta samo ime in e-poštni naslov ter strinjanje na koncu. Vse drugo lahko pustite prazno.</p>
         <div class="form-grid">
           <div class="field">
             <label for="f-name">Ime in priimek</label>
@@ -756,12 +762,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
             <label for="f-phone">Telefon</label>
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="+386">
           </div>
-          <fieldset class="field">
+          <fieldset class="field full">
             <legend class="legend">Za koga?</legend>
             <div class="choices">
               <label class="choice"><input type="radio" name="who" value="zase"><span>Zase</span></label>
-              <label class="choice"><input type="radio" name="who" value="druzina"><span>Družina</span></label>
-              <label class="choice"><input type="radio" name="who" value="podjetje"><span>Podjetje</span></label>
+              <label class="choice"><input type="radio" name="who" value="druzina"><span>Za družino</span></label>
+              <label class="choice"><input type="radio" name="who" value="podjetje"><span>Za podjetje</span></label>
             </div>
           </fieldset>
           <fieldset class="field full">
@@ -779,7 +785,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
             <textarea id="f-msg" name="message" maxlength="2000" placeholder="Kaj vas skrbi ali kaj bi radi preverili?"></textarea>
           </div>
           <div class="field full">
-            <label class="consent"><input type="checkbox" id="f-consent" name="consent" required>
+            <label class="consent"><input type="checkbox" id="f-consent" name="consent" required aria-required="true">
               <span>Strinjam se, da GJIC moje podatke uporabi samo za odgovor na to povpraševanje.</span></label>
             <span class="error" id="e-consent">Za pošiljanje je potrebno strinjanje.</span>
           </div>
@@ -795,7 +801,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <p id="success-text">Oglasim se v enem delovnem dnevu, da se dogovoriva za uvodni pogovor.</p>
           <p>Za pogovor pripravite obstoječe police, lahko tudi kot fotografije s telefona. Če je nujno, pokličite:</p>
           <a class="success-tel num nowrap" href="tel:+38640123456">+386 40 123 456</a>
-          <button class="btn btn-ghost" type="button" id="form-edit">Popravi podatke</button>
+          <button class="btn btn-ghost" type="button" id="form-edit">Popravite podatke</button>
         </div>
       </form>
 
@@ -962,10 +968,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     e.preventDefault();
     if(!validate()){ var first=form.querySelector('.is-invalid input, .is-invalid textarea'); if(first) first.focus(); return; }
     var name=d.getElementById('f-name').value.trim().split(/\s+/)[0].slice(0,40);
-    d.getElementById('success-text').textContent=name+', oglasim se v enem delovnem dnevu, da se dogovoriva za uvodni pogovor.';
-    form.classList.add('is-sent');
-    form.querySelector('.form-success').focus && form.querySelector('.form-success').setAttribute('tabindex','-1');
-    form.querySelector('.form-success').focus();
+    var card=form.querySelector('.form-success');
+    form.classList.add('is-sent'); card.setAttribute('tabindex','-1');
+    requestAnimationFrame(function(){
+      d.getElementById('success-text').textContent=name+', oglasim se v enem delovnem dnevu, da se dogovoriva za uvodni pogovor.';
+      card.focus();
+    });
   });
 
   d.getElementById('year').textContent=new Date().getFullYear();
